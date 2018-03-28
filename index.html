@@ -1,0 +1,156 @@
+<html>
+  <head>
+    <meta name="apple-mobile-web-app-capable"/>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-controller-cursor-component@0.2.7/dist/aframe-controller-cursor-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene  shadow="type: pcfsoft">
+
+        <!-- A frame assests tag which is used to load any asset in the project 
+            like images or vedio tags -->
+        <a-assets>   
+               <img id="ground" src="images/buckmap.jpg">
+               <img id="sky3" crossorigin="anonymous" src="https://aframe.io/aframe/examples/boilerplate/panorama/puydesancy.jpg">
+               <img id="sky2" src="images/test2.jpg">
+                <a-mixin id="red" material="color: red"></a-mixin>
+                <a-mixin id="cube" geometry="primitive: box"></a-mixin>
+                <audio src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav" autoplay
+                preload></audio>
+                <img id="iceTexture" src="images/1234.JPG">
+                <img id="UoB"  crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/>
+                <!-- <vedio id="#demo" loop="true" src="">
+                </vedio> -->
+                <img id="ground" crossorigin="anonymous"
+                     src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+                <img id="skyImg" crossorigin="anonymous"  
+                     src="https://cdn.glitch.com/e6225ccd-c32e-4cf8-b039-e78814a8cb78%2Fbg-3.jpg"/>
+        </a-assets>
+           
+         <!-- IMAGE FOR BACKGROUND  -->
+        <a-sky radius="1000" 
+        flat-shading="true" position="0 100 20"></a-sky>  
+        <!-- <a-image src="#UoB" width="25" height="18">
+        </a-image> -->
+       
+        <!-- CUVRED iMAGE -->
+        <!-- <a-curvedimage src="#UoB"
+                       height="15"
+                       radius="5.7"
+                       theta-length="360"
+                       rotation="0 90 0"
+                       scale="2 2 2"
+                       position="0 1 -1">
+
+        </a-curvedimage> -->
+
+        <!-- Vedio Tag -->
+       <!-- <a-vedio src="" position="0 2 5">
+
+       </a-vedio> -->
+       <a-box id="hunter" color="blue" scale-on-mouseenter="to: 2.2 2.2 2.2" position="-8 1 -5" rotation="0 0 0" scale="2 2 2">
+            <a-animation  begin="click" attribute="rotation" direction="alternate" dur="2000"
+                         repeat="indefinite"
+                         to="360 360 0">
+                        </a-animation>
+                       
+       </a-box>
+       <a-text width="20" color="brown" position="-8 3 -7" value="Hunter Street" geometry="primitive:plane"></a-text>
+       <a-box id="verney" color="red" scale-on-mouseenter="to: 2.2 2.2 2.2" position="40 1 24" rotation="0 0 0" scale="2 2 2">
+          <a-animation  begin="click" attribute="rotation" direction="alternate" dur="2000"
+                       repeat="indefinite"
+                       to="360 360 0">
+                      </a-animation>
+     </a-box>
+   
+
+       <a-plane src="#ground"  height="150" width="100"  rotation="-90 0 0"
+       roughness="1"  metalness="0"
+       ></a-plane>
+     
+       <!-- <a-box src="#boxTexture" position="0 2 -5" rotation="0 45 45" scale="2 2 2"
+                         scale-on-mouseenter="to: 2.2 2.2 2.2">
+                  <a-animation attribute="position"  begin="click" to="0 2.2 -5" direction="alternate" dur="2000"
+                     repeat="indefinite"></a-animation>
+      </a-box> -->
+
+
+       <!-- use of mIxins -->
+       <!-- <a-entity mixin="red cube"></a-entity> -->
+       
+       <!-- Sound -->
+       <!-- <a-sound src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav" autoplay="true"
+       position="-3 1 -4"></a-sound> -->
+
+
+       <!-- <a-box 
+              width="2"
+              height="1"
+              depth="1"
+              position="0 2 0"
+              rotation="45 95 45"
+              scale="1 1 1"
+              src="#iceTexture"
+             >
+             <a-animation  begin="click" attribute="rotation"
+                         repeat="indefinite"
+                         to="0 360 0">
+                        </a-animation>
+      </a-box> -->
+      <!-- <a-plane src="#ground" rotation="-90 0 0" width="30" height="30"
+        ></a-plane> -->
+      <a-camera position="2.11 3.25 3.88" rotation="0 8.37 0">
+          <a-cursor color="blue"></a-cursor>
+      </a-camera>
+     
+ 
+      
+      <!-- <a-entity light="type: spot;
+      castShadow: true;
+      intensity: 0.4;"
+position="-5 3 1.5"></a-entity>      
+       -->
+      <!-- <a-entity environment="preset: forest; dressingAmount: 500"></a-entity> -->
+
+
+    <!-- <a-entity vive-controls="hand: left"></a-entity>
+    <a-entity vive-controls="hand: right" controller-cursor></a-entity> -->
+    </a-scene>
+    <script>
+
+         AFRAME.registerComponent('scale-on-mouseenter', {
+                                    schema: {
+                                                to: {default: '2.5 2.5 2.5'}
+                                                 },
+                                   init: function () {
+                                          var data = this.data;
+                                              this.el.addEventListener('mouseenter', function () {
+                                                debugger;
+                                                var id = this.getAttribute('id');
+                                                            if(id == "hunter"){
+                                                                   sky.setAttribute("src","#sky2");
+                                                                  }else if(id=="verney"){
+                                                                       sky.setAttribute("src","#sky3");
+                                                                           }
+                                                });
+                                                    }
+                                    }); 
+        var box = document.querySelector('a-box');
+        var sky = document.querySelector('a-sky');
+        // box.addEventListener("mouseenter",function(){
+        //    debugger;
+        //    var id = this.getAttribute('id');
+        //    if(id == "hunter"){
+        //     sky.setAttribute("src","#sky2");
+        //    }else if(id=="verney"){
+        //     sky.setAttribute("src","#sky3");
+        //    }
+           
+         
+           
+        // })
+    </script>
+  </body>
+</html>
