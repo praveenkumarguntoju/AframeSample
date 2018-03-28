@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended: true ,limit: '50mb'}));
 
 // Create link to Angular build directory
 app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/src/app/images'));
+app.use(express.static(__dirname + '/images'));
 app.use(express.static(distDir));
 var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
