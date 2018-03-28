@@ -1,51 +1,16 @@
 var express = require('express');
-var nodemailer = require('nodemailer');
-var app = express();
-const path = require('path');
-var bodyParser = require('body-parser');
-var mongodb = require("mongodb");
-var jwt    = require('jsonwebtoken');
-
-var ObjectId = require('mongodb').ObjectId; 
-
-var app = express();
-app.set('superSecret', 'TestJwtToken'); // secret variable
+var app = require("express")();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var fs = require('fs');
 
 
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({extended: true ,limit: '50mb'}));
-
-
-// Create link to Angular build directory
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/images'));
-app.use(express.static(distDir));
-var path = require('path');
-
-// viewed at http://localhost:8080
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
+app.use(express.static(__dirname + '/audios'));
+app.get('/',function(req,res){
+    res.sendfile('index.html');
 });
-var server = app.listen(process.env.PORT || 8080, function () {
-    var port = server.address().port;
-    console.log("App now running on port", port);
-  });
-
-var db;
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+http.listen(process.env.PORT || 8082,function(){
+    console.log("The server started.");
+})
