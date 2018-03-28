@@ -12,14 +12,17 @@
         <!-- A frame assests tag which is used to load any asset in the project 
             like images or vedio tags -->
         <a-assets>   
-               <img id="ground" src="buckmap.jpg">
+               <img id="ground" src="images/buckmap.jpg">
                <img id="sky3" crossorigin="anonymous" src="https://aframe.io/aframe/examples/boilerplate/panorama/puydesancy.jpg">
-               <img id="sky2" src="test2.jpg">
+               <img id="sky2" src="images/test2.jpg">
                 <a-mixin id="red" material="color: red"></a-mixin>
                 <a-mixin id="cube" geometry="primitive: box"></a-mixin>
+                <audio id="testAudio" preload>
+                  <source src="images/test.mp3" type="audio/mp3">
+                </audio>
                 <audio src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav" autoplay
                 preload></audio>
-                <img id="iceTexture" src="1234.JPG">
+                <img id="iceTexture" src="images/1234.JPG">
                 <img id="UoB"  crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/>
                 <!-- <vedio id="#demo" loop="true" src="">
                 </vedio> -->
@@ -50,7 +53,7 @@
        <!-- <a-vedio src="" position="0 2 5">
 
        </a-vedio> -->
-       <a-box id="hunter" color="blue" scale-on-mouseenter="to: 2.2 2.2 2.2" position="-8 1 -5" rotation="0 0 0" scale="2 2 2">
+       <a-box id="hunter"  move eve color="blue" scale-on-mouseenter="to: 2.2 2.2 2.2" position="-8 1 -5" rotation="0 0 0" scale="2 2 2">
             <a-animation  begin="click" attribute="rotation" direction="alternate" dur="2000"
                          repeat="indefinite"
                          to="360 360 0">
@@ -68,6 +71,7 @@
 
        <a-plane src="#ground"  height="150" width="100"  rotation="-90 0 0"
        roughness="1"  metalness="0"
+       sound="src:#testAudio;loop:true;autoplay:true"
        ></a-plane>
      
        <!-- <a-box src="#boxTexture" position="0 2 -5" rotation="0 45 45" scale="2 2 2"
@@ -84,6 +88,9 @@
        <!-- <a-sound src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav" autoplay="true"
        position="-3 1 -4"></a-sound> -->
 
+       
+       <!-- <a-sound src="#testAudio" autoplay="true"
+       position="20 150 30" volume="0.9"></a-sound> -->
 
        <!-- <a-box 
               width="2"
@@ -101,9 +108,16 @@
       </a-box> -->
       <!-- <a-plane src="#ground" rotation="-90 0 0" width="30" height="30"
         ></a-plane> -->
-      <a-camera position="2.11 3.25 3.88" rotation="0 8.37 0">
-          <a-cursor color="blue"></a-cursor>
-      </a-camera>
+      <a-entity   listener="stepFactor:0.01"
+      camera="active: true" look-controls wasd-controls position="0 1.6 0" >
+        <a-entity id="cursor" cursor="fuse: true;fuseTimeout:500"
+        material="color:black"
+        geometry="primitive:ring"
+        position="0 0 -1"
+        scale="0.01 0.01 0.01"
+      ></a-entity>
+      </a-entity>
+   
      
  
       
@@ -119,6 +133,18 @@ position="-5 3 1.5"></a-entity>
     <a-entity vive-controls="hand: right" controller-cursor></a-entity> -->
     </a-scene>
     <script>
+                    AFRAME.registerComponent("listener", {
+	                                              	schema:{
+			                                                    stepFactor:{
+				                                                              type : "number",
+			                                                                default : 0.05
+			                                                   }
+		                                                     },
+		                                          tick : function(){	
+                                                debugger;
+        this.el.components.camera.camera.parent.position.add(this.el.components.camera.camera.getWorldDirection().multiplyScalar(this.data.stepFactor));
+		                                                     }
+	                                              });
 
          AFRAME.registerComponent('scale-on-mouseenter', {
                                     schema: {
@@ -133,7 +159,7 @@ position="-5 3 1.5"></a-entity>
                                                                    sky.setAttribute("src","#sky2");
                                                                   }else if(id=="verney"){
                                                                        sky.setAttribute("src","#sky3");
-                                                                           }
+                                                                    }
                                                 });
                                                     }
                                     }); 
