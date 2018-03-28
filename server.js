@@ -20,10 +20,12 @@ app.use(bodyParser.urlencoded({extended: true ,limit: '50mb'}));
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/images'));
 app.use(express.static(distDir));
-app.get('/*',function(request,response){
-       response.sendFile(__dirname+'index.html');
-    });
+var path = require('path');
 
+// viewed at http://localhost:8080
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
 var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
     console.log("App now running on port", port);
