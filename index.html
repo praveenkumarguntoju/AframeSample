@@ -1,13 +1,12 @@
-<html>
-  <head>
-    <meta name="apple-mobile-web-app-capable"/>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta name="apple-mobile-web-app-capable" />
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-controller-cursor-component@0.2.7/dist/aframe-controller-cursor-component.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
-  </head>
-  <body>
-    <a-scene  shadow="type: pcfsoft">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%7CRoboto+Mono" media="all" /></head>
+  <body class="a-body ">
+    <a-scene shadow="type: pcfsoft" class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui=""><canvas class="a-canvas" data-aframe-canvas="true" width="300" height="150"></canvas>
 
         <!-- A frame assests tag which is used to load any asset in the project 
             like images or vedio tags -->
@@ -17,24 +16,20 @@
                <img id="sky2" src="test2.jpg">
                 <a-mixin id="red" material="color: red"></a-mixin>
                 <a-mixin id="cube" geometry="primitive: box"></a-mixin>
-                <audio id="testAudio" preload>
-                  <source src="test.mp3" type="audio/mp3">
-                </audio>
-                <audio src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav" autoplay
-                preload></audio>
+                
+                
                 <img id="iceTexture" src="images/1234.JPG">
-                <img id="UoB"  crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"/>
+                <img id="UoB" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
                 <!-- <vedio id="#demo" loop="true" src="">
                 </vedio> -->
-                <img id="ground" crossorigin="anonymous"
-                     src="https://cdn.aframe.io/a-painter/images/floor.jpg">
-                <img id="skyImg" crossorigin="anonymous"  
-                     src="https://cdn.glitch.com/e6225ccd-c32e-4cf8-b039-e78814a8cb78%2Fbg-3.jpg"/>
-        </a-assets>
+                <img id="ground" crossorigin="anonymous" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+                <img id="skyImg" crossorigin="anonymous" src="https://cdn.glitch.com/e6225ccd-c32e-4cf8-b039-e78814a8cb78%2Fbg-3.jpg">
+        <audio id="testAudio" preload="" crossorigin="anonymous">
+                  <source src="test.mp3" type="audio/mp3">
+                </audio><audio src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav" autoplay="" preload="" crossorigin="anonymous"></audio></a-assets>
            
          <!-- IMAGE FOR BACKGROUND  -->
-        <a-sky radius="1000" 
-        flat-shading="true" position="0 100 20"></a-sky>  
+        <a-sky radius="1000" flat-shading="true" position="0 100 20" material="" geometry="" src="#sky3"></a-sky>  
         <!-- <a-image src="#UoB" width="25" height="18">
         </a-image> -->
        
@@ -53,26 +48,19 @@
        <!-- <a-vedio src="" position="0 2 5">
 
        </a-vedio> -->
-       <a-box id="hunter"  move eve color="blue" scale-on-mouseenter="to: 2.2 2.2 2.2" position="-8 1 -5" rotation="0 0 0" scale="2 2 2">
-            <a-animation  begin="click" attribute="rotation" direction="alternate" dur="2000"
-                         repeat="indefinite"
-                         to="360 360 0">
+       <a-box id="hunter" move="" eve="" color="blue" scale-on-mouseenter="to:2.2 2.2 2.2" position="-40.689377311516864 10.54484640969564 -10.270121967075386" rotation="354.58033380609265 354.58033380609265 0" scale="2 2 2" material="" geometry="">
+            <a-animation begin="click" attribute="rotation" direction="alternate" dur="2000" repeat="indefinite" to="360 360 0">
                         </a-animation>
                        
        </a-box>
-       <a-text width="20" color="brown" position="-8 3 -7" value="Hunter Street" geometry="primitive:plane"></a-text>
-       <a-box id="verney" color="red" scale-on-mouseenter="to: 2.2 2.2 2.2" position="40 1 24" rotation="0 0 0" scale="2 2 2">
-          <a-animation  begin="click" attribute="rotation" direction="alternate" dur="2000"
-                       repeat="indefinite"
-                       to="360 360 0">
+       <a-text width="20" color="brown" position="-8 3 -7" value="Hunter Street" geometry="primitive:plane" text=""></a-text>
+       <a-box id="verney" color="red" scale-on-mouseenter="to:2.2 2.2 2.2" position="42.394420900391 -62.755450171839705 11.666936917912462" scale="2 2 2" material="" geometry="">
+          <a-animation begin="click" attribute="rotation" direction="alternate" dur="2000" repeat="indefinite" to="360 360 0">
                       </a-animation>
      </a-box>
    
 
-       <a-plane src="#ground"  height="150" width="100"  rotation="-90 0 0"
-       roughness="1"  metalness="0"
-       sound="src:#testAudio;loop:true;autoplay:true"
-       ></a-plane>
+       <a-plane src="#ground" height="150" width="100" rotation="-90 0 0" roughness="1" metalness="0" sound="src:null;loop:true;autoplay:true" position="28.16989271736773 -118.7255561715279 -9.139635010263163" material="" geometry=""></a-plane>
      
        <!-- <a-box src="#boxTexture" position="0 2 -5" rotation="0 45 45" scale="2 2 2"
                          scale-on-mouseenter="to: 2.2 2.2 2.2">
@@ -108,14 +96,8 @@
       </a-box> -->
       <!-- <a-plane src="#ground" rotation="-90 0 0" width="30" height="30"
         ></a-plane> -->
-      <a-entity   listener="stepFactor:0.01"
-      camera="active: true" look-controls wasd-controls position="0 1.6 0" >
-        <a-entity id="cursor" cursor="fuse: true;fuseTimeout:500"
-        material="color:black"
-        geometry="primitive:ring"
-        position="0 0 -1"
-        scale="0.01 0.01 0.01"
-      ></a-entity>
+      <a-entity listener="stepFactor:0.01" camera="" look-controls="" wasd-controls="" position="2.9141043471098116 -82.19863923372702 -6.916864223424059" rotation="-72.07809062745758 -102.10107909231263 0" data-aframe-inspector-original-camera="">
+        <a-entity id="cursor" cursor="fuse:true;fuseTimeout:500" material="color:black" geometry="primitive:ring" position="0 0 -1" scale="0.01 0.01 0.01" raycaster=""></a-entity>
       </a-entity>
    
      
@@ -133,18 +115,7 @@ position="-5 3 1.5"></a-entity>
     <a-entity vive-controls="hand: right" controller-cursor></a-entity> -->
     </a-scene>
     <script>
-                    AFRAME.registerComponent("listener", {
-	                                              	schema:{
-			                                                    stepFactor:{
-				                                                              type : "number",
-			                                                                default : 0.05
-			                                                   }
-		                                                     },
-		                                          tick : function(){	
-                                                debugger;
-        this.el.components.camera.camera.parent.position.add(this.el.components.camera.camera.getWorldDirection().multiplyScalar(this.data.stepFactor));
-		                                                     }
-	                                              });
+                    
 
          AFRAME.registerComponent('scale-on-mouseenter', {
                                     schema: {
@@ -178,5 +149,6 @@ position="-5 3 1.5"></a-entity>
            
         // })
     </script>
-  </body>
-</html>
+  
+
+<textarea readonly="" style="font-size: 12pt; border: 0px; padding: 0px; margin: 0px; position: absolute; left: -9999px; top: 0px;"></textarea></body></html>
